@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# nessesary packages
+apt-get install -y python3 cmake ninja-build
+
 # install emscription
 git clone https://github.com/emscripten-core/emsdk
 cd emsdk
