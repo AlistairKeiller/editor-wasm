@@ -21,7 +21,7 @@ cmake -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
         -DLLVM_ENABLE_PROJECTS="clang"
-cmake --build local_build
+cmake --build local_build -- llvm-tblgen clang-tblgen
 
 
 # build wasm
