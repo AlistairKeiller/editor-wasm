@@ -1,4 +1,17 @@
+#!/bin/bash
+set -e
+
+
+# nessesary packages
 apt-get install -y python3 cmake ninja-build
+
+# install emscription
+git clone https://github.com/emscripten-core/emsdk
+cd emsdk
+./emsdk install latest
+./emsdk activate latest
+source ./emsdk_env.sh
+cd ..
 
 git clone https://github.com/jprendes/emception
 cd emception
