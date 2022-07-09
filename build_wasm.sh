@@ -12,7 +12,7 @@ cd emsdk
 source ./emsdk_env.sh
 cd ..
 
-# build local llv
+# build local llvm
 git clone https://github.com/llvm/llvm-project
 cd llvm-project
 cmake -G Ninja \
@@ -24,7 +24,7 @@ cmake -G Ninja \
 cmake --build local_build -- llvm-tblgen clang-tblgen
 
 
-# build wasm
+# build wasm llvm
 emcmake cmake -G Ninja \
         -S llvm \
         -B web_build \
@@ -41,4 +41,10 @@ emcmake cmake -G Ninja \
         -DLLVM_INCLUDE_TESTS=OFF \
         -DLLVM_TABLEGEN=$(pwd)/local_build/bin/llvm-tblgen \
         -DCLANG_TABLEGEN=$(pwd)/local_build/bin/clang-tblgen
+
+# patches
+sed -i -E 's/\.(m?)js-([0-9]+)/-\2.\1js/g' $(pwd)/web_build/build.ninja
+sed -i -E 's/\.js/.mjs/g' $(pwd)/web_build/build.ninja
+sed -i -E 's/proxyfs\.mjs/proxyfs.js/g' $(pwd)/web_build/build.ninja
+
 emmake cmake --build web_build
