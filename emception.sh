@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-
 # nessesary packages
 apt-get install -y python3 cmake ninja-build
 
