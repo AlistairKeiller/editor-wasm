@@ -22,4 +22,4 @@ docker run \
     -u $(id -u):$(id -g) \
     $(id -G | tr ' ' '\n' | xargs -I{} echo --group-add {}) \
     emception_build:latest \
-    bash -c "cd $(pwd) && ./build.sh"
+    bash -c "cd $(pwd) && ./build-llvm.sh"
