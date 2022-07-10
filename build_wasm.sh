@@ -31,14 +31,6 @@ emcmake cmake -G "Unix Makefiles" \
         -DCMAKE_BUILD_TYPE=Release \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
         -DLLVM_ENABLE_PROJECTS="clang;lld" \
-        -DLLVM_ENABLE_DUMP=OFF \
-        -DLLVM_ENABLE_ASSERTIONS=OFF \
-        -DLLVM_ENABLE_EXPENSIVE_CHECKS=OFF \
-        -DLLVM_ENABLE_BACKTRACES=OFF \
-        -DLLVM_BUILD_TOOLS=OFF \
-        -DLLVM_ENABLE_THREADS=OFF \
-        -DLLVM_BUILD_LLVM_DYLIB=OFF \
-        -DLLVM_INCLUDE_TESTS=OFF \
         -DLLVM_TABLEGEN=$(pwd)/local_build/bin/llvm-tblgen \
         -DCLANG_TABLEGEN=$(pwd)/local_build/bin/clang-tblgen
 cd web_build
