@@ -1,5 +1,8 @@
 #!/bin/bash
 
+git clone https://github.com/jprendes/emception.git
+cd emception
+
 SRC=$(dirname $0)
 SRC=$(realpath "$SRC")
 
