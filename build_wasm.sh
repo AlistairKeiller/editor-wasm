@@ -30,7 +30,7 @@ emcmake cmake -G "Unix Makefiles" \
         -B web_build \
         -DCMAKE_BUILD_TYPE=Release \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
-        -DLLVM_ENABLE_PROJECTS="clang;lld;clang-tools-extra" \
+        -DLLVM_ENABLE_PROJECTS="clang;lld" \
         -DLLVM_ENABLE_DUMP=OFF \
         -DLLVM_ENABLE_ASSERTIONS=OFF \
         -DLLVM_ENABLE_EXPENSIVE_CHECKS=OFF \
