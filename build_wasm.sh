@@ -41,5 +41,5 @@ emcmake cmake -G "Unix Makefiles" \
         -DLLVM_INCLUDE_TESTS=OFF \
         -DLLVM_TABLEGEN=$(pwd)/local_build/bin/llvm-tblgen \
         -DCLANG_TABLEGEN=$(pwd)/local_build/bin/clang-tblgen
-
-emmake cmake --build web_build
+cd web_build
+emmake make -j2
