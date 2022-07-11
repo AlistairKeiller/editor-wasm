@@ -9,8 +9,8 @@ apt-get install -y cmake g++ git ninja-build python3
 # install emscription
 git clone https://github.com/emscripten-core/emsdk
 cd emsdk
-./emsdk install latest
-./emsdk activate latest
+./emsdk install 3.1.6
+./emsdk activate 3.1.6
 source ./emsdk_env.sh
 cd ..
 
