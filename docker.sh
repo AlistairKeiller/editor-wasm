@@ -4,6 +4,8 @@ docker build \
     -t emception_build \
     .
 
+mkdir -p $(pwd)/build/emsdk_cache
+
 docker run \
     --rm \
     -v /var/run/docker.sock:/var/run/docker.sock \
