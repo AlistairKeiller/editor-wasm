@@ -17,6 +17,7 @@ cd ..
 # build local llvm
 git clone https://github.com/llvm/llvm-project
 cd llvm-project
+git reset --hard 608161225ef1b8d08973188f3162db9363455486
 cmake -G Ninja -S llvm -B local-build \
         -DCMAKE_BUILD_TYPE=Release \
         -DLLVM_ENABLE_PROJECTS=clang
