@@ -6,14 +6,6 @@ set -e
 # nessesary packages
 apt-get install -y cmake clang git ninja-build python3
 
-# install emscription
-git clone https://github.com/emscripten-core/emsdk
-cd emsdk
-./emsdk install 3.1.6
-./emsdk activate 3.1.6
-source ./emsdk_env.sh
-cd ..
-
 # build local llvm
 git clone https://github.com/llvm/llvm-project
 cd llvm-project
