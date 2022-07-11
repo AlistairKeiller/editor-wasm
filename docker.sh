@@ -1,5 +1,5 @@
 #!/bin/bash
 
 docker run --rm \
-    emception_build:latest \
+    emscripten/emsdk:3.1.6 \
     bash build.sh

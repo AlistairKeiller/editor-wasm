@@ -4,7 +4,7 @@
 set -e
 
 # nessesary packages
-apt-get install -y cmake g++ git ninja-build python3
+apt-get install -y cmake clang git ninja-build python3
 
 # install emscription
 git clone https://github.com/emscripten-core/emsdk
