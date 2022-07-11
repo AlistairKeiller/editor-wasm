@@ -1,5 +1,5 @@
 #!/bin/bash
 
 docker run --rm \
-    emscripten/emsdk:3.1.6 \
+    emscripten/emsdk:latest \
     bash build.sh
