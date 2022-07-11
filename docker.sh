@@ -2,4 +2,4 @@
 
 docker run --rm \
     emscripten/emsdk:latest \
-    bash build.sh
+    bash -c "cd $(pwd) && build.sh"
