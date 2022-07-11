@@ -1,4 +1,6 @@
 #!/bin/bash
+# inspired by https://github.com/soedirgo/llvm-wasm
+
 set -e
 
 # nessesary packages
@@ -31,5 +33,5 @@ emcmake cmake -G Ninja -S llvm -B web-build \
         -DLLVM_DEFAULT_TARGET_TRIPLE=wasm32-wasi \
         -DLLVM_TARGET_ARCH=wasm32-emscripten \
         -DLLVM_ENABLE_PROJECTS=lld \
-        -DLLVM_TABLEGEN=$PWD/build-host/bin/llvm-tblgen
+        -DLLVM_TABLEGEN=$PWD/local-build/bin/llvm-tblgen
 cmake --build web-build
