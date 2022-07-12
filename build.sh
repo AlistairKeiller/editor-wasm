@@ -31,10 +31,9 @@ emcmake cmake -G Ninja -S llvm -B web-build \
         -DLLVM_INCLUDE_TESTS=OFF \
         -DLLVM_TABLEGEN=$PWD/local-build/bin/llvm-tblgen \
         -DCLANG_TABLEGEN=$PWD/local-build/bin/clang-tblgen \
-        # -DCMAKE_CROSSCOMPILING=True \
-        # -DCMAKE_INSTALL_PREFIX=install \
-        # -DLLVM_DEFAULT_TARGET_TRIPLE=wasm32-wasi \
-        # -DLLVM_TARGET_ARCH=wasm32-emscripten \
+        -DCMAKE_CROSSCOMPILING=True \
+        -DLLVM_DEFAULT_TARGET_TRIPLE=wasm32-wasi \
+        -DLLVM_TARGET_ARCH=wasm32-emscripten
 
 
 
