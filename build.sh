@@ -3,8 +3,6 @@
 
 set -e
 
-# nessesary packages
-apt-get install -y cmake clang git ninja-build python3
 
 # build local llvm
 git clone https://github.com/llvm/llvm-project
