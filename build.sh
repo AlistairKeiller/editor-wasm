@@ -18,12 +18,12 @@ cmake --build local-build -- clang-tblgen llvm-tblgen
 CXXFLAGS="-Dwait4=__syscall_wait4" \
 emcmake cmake -G Ninja -S llvm -B web-build \
         -DCMAKE_BUILD_TYPE=Release \
-        -DLLVM_TARGETS_TO_BUILD=WebAssembly \
         -DLLVM_ENABLE_PROJECTS="clang;lld;clang-tools-extra" \
         -DLLVM_ENABLE_THREADS=OFF \
         -DLLVM_TABLEGEN=$PWD/local-build/bin/llvm-tblgen \
         -DCLANG_TABLEGEN=$PWD/local-build/bin/clang-tblgen \
         -DCMAKE_CROSSCOMPILING=True \
+        -DCMAKE_INSTALL_PREFIX=install \
         -DLLVM_DEFAULT_TARGET_TRIPLE=wasm32-wasi \
         -DLLVM_TARGET_ARCH=wasm32-emscripten
 
