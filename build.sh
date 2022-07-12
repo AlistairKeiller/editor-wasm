@@ -29,13 +29,11 @@ emcmake cmake -G Ninja -S llvm -B web-build \
         -DLLVM_ENABLE_THREADS=OFF \
         -DLLVM_BUILD_LLVM_DYLIB=OFF \
         -DLLVM_INCLUDE_TESTS=OFF \
-        -DLLVM_TABLEGEN=$PWD/local-build/bin/llvm-tblgen
+        -DLLVM_TABLEGEN=$PWD/local-build/bin/llvm-tblgen \
         -DCLANG_TABLEGEN=$PWD/local-build/bin/llvm-tblgen
 
         # -DCMAKE_CROSSCOMPILING=True \
         # -DCMAKE_INSTALL_PREFIX=install \
-        # -DCMAKE_CXX_FLAGS='-O3 -s NO_ASSERTIONS -s NO_INVOKE_RUN -s EXIT_RUNTIME -s ALLOW_MEMORY_GROWTH -s INITIAL_MEMORY=64MB -s MODULARIZE -s EXPORT_ES6 -s EXTRA_EXPORTED_RUNTIME_METHODS=["callMain","FS"]' \
-        # -DLLVM_ENABLE_THREADS=OFF \
         # -DLLVM_DEFAULT_TARGET_TRIPLE=wasm32-wasi \
         # -DLLVM_TARGET_ARCH=wasm32-emscripten \
 
