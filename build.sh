@@ -30,6 +30,7 @@ emcmake cmake -G Ninja -S llvm -B web-build \
         -DLLVM_BUILD_LLVM_DYLIB=OFF \
         -DLLVM_INCLUDE_TESTS=OFF \
         -DLLVM_TABLEGEN=$PWD/local-build/bin/llvm-tblgen
+        -DCLANG_TABLEGEN=$PWD/local-build/bin/llvm-tblgen
 
         # -DCMAKE_CROSSCOMPILING=True \
         # -DCMAKE_INSTALL_PREFIX=install \
