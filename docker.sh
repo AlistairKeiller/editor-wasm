@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 chmod +x build.sh
 
 docker run \
