@@ -20,19 +20,12 @@ emcmake cmake -G Ninja -S llvm -B web-build \
         -DCMAKE_BUILD_TYPE=Release \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
         -DLLVM_ENABLE_PROJECTS="clang;lld;clang-tools-extra" \
-        -DLLVM_ENABLE_DUMP=OFF \
-        -DLLVM_ENABLE_ASSERTIONS=OFF \
-        -DLLVM_ENABLE_EXPENSIVE_CHECKS=OFF \
-        -DLLVM_ENABLE_BACKTRACES=OFF \
-        -DLLVM_BUILD_TOOLS=OFF \
         -DLLVM_ENABLE_THREADS=OFF \
-        -DLLVM_BUILD_LLVM_DYLIB=OFF \
-        -DLLVM_INCLUDE_TESTS=OFF \
         -DLLVM_TABLEGEN=$PWD/local-build/bin/llvm-tblgen \
         -DCLANG_TABLEGEN=$PWD/local-build/bin/clang-tblgen \
-        # -DCMAKE_CROSSCOMPILING=True \
-        # -DLLVM_DEFAULT_TARGET_TRIPLE=wasm32-wasi \
-        # -DLLVM_TARGET_ARCH=wasm32-emscripten
+        -DCMAKE_CROSSCOMPILING=True \
+        -DLLVM_DEFAULT_TARGET_TRIPLE=wasm32-wasi \
+        -DLLVM_TARGET_ARCH=wasm32-emscripten
 
 
 
