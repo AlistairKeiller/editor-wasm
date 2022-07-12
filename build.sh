@@ -19,7 +19,7 @@ LDFLAGS="-s LLD_REPORT_UNDEFINED=1 -s ALLOW_MEMORY_GROWTH=1 -s EXPORTED_FUNCTION
 emcmake cmake -G Ninja -S llvm -B web-build \
         -DCMAKE_BUILD_TYPE=Release \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
-        -DLLVM_ENABLE_PROJECTS="clang;lld;clang-tools-extra" \
+        # -DLLVM_ENABLE_PROJECTS="clang;lld;clang-tools-extra" \
         -DLLVM_ENABLE_DUMP=OFF \
         -DLLVM_ENABLE_ASSERTIONS=OFF \
         -DLLVM_ENABLE_EXPENSIVE_CHECKS=OFF \
