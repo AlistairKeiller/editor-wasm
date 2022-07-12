@@ -2,6 +2,7 @@
 
 SRC=$(dirname $0)
 SRC=$(realpath "$SRC")
+chmod +x $SRC/build.sh
 
 docker build \
     -t emception_build \
