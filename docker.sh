@@ -1,5 +1,5 @@
 #!/bin/bash
-chmod +x $SRC/build.sh
+chmod +x build.sh
 
 docker run \
     --rm \
