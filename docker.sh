@@ -10,7 +10,7 @@ docker build \
 mkdir -p $(pwd)/build/emsdk_cache
 
 docker run \
-    -it --rm \
+    --rm \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v $(pwd):$(pwd) \
     -v $(pwd)/build/emsdk_cache:/emsdk/upstream/emscripten/cache \
