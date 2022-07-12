@@ -1,7 +1,4 @@
 #!/bin/bash
-
-SRC=$(dirname $0)
-SRC=$(realpath "$SRC")
 chmod +x $SRC/build.sh
 
 docker run \
