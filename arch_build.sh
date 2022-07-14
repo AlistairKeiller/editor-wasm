@@ -1,12 +1,18 @@
 #!/bin/bash
 set -e
 
-git clone https://github.com/emscripten-core/emsdk
+# install nessesary pacakges
+yay -Syu --noconfirm clang ninja
+
+# install emscripten
+if [ ! -d emscripten ]; then
+    git clone https://github.com/emscripten-core/emsdk
+fi
 cd emsdk
 ./emsdk install latest
 ./emsdk activate latest
 source ./emsdk_env.sh
+cd ..
 
-yay -S clang ninja
-
-bash build.sh
+# run build script
+. build.sh

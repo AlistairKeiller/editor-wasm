@@ -5,7 +5,9 @@ set -e
 
 
 # build local llvm
-git clone https://github.com/llvm/llvm-project
+if [ ! -d llvm-project ]; then
+    git clone https://github.com/llvm/llvm-project
+fi
 cd llvm-project
 cmake -G Ninja -S llvm -B local-build \
         -DCMAKE_BUILD_TYPE=Release \
