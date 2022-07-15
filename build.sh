@@ -17,14 +17,11 @@ CXXFLAGS="-Dwait4=__syscall_wait4" \
 emcmake cmake -G Ninja -S llvm -B web-build \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
-        -DLLVM_ENABLE_THREADS=OFF \
         -DLLVM_INCLUDE_TESTS=OFF \
         -DLLVM_BUILD_TOOLS=OFF \
         -DLLVM_TABLEGEN=$PWD/local-build/bin/llvm-tblgen \
         -DCLANG_TABLEGEN=$PWD/local-build/bin/clang-tblgen \
         -DLLVM_ENABLE_PROJECTS="clang;lld;clang-tools-extra" \
-        -DLLVM_PARALLEL_LINK_JOBS=1 \
-        # LLVM_BUILD_LLVM_DYLIB=ON \
-        # LLVM_LINK_LLVM_DYLIB=ON \
+        -DLLVM_PARALLEL_LINK_JOBS=1
 
 ninja -C web-build
