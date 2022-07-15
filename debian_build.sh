@@ -2,7 +2,7 @@
 set -e
 
 # install nessesary pacakges
-yay -Syu --noconfirm clang ninja
+apt-get install -y clang ninja
 
 # install emscripten
 source emscripten.sh

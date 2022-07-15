@@ -1,10 +1,7 @@
 #!/bin/bash
 # inspired by https://github.com/soedirgo/llvm-wasm
 
-set -e
-
-
-# build local llvm
+# build tblgen for host
 rm -rf llvm-project
 git clone https://github.com/llvm/llvm-project
 cd llvm-project
