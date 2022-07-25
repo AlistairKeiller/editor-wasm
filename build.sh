@@ -13,7 +13,7 @@ ninja -C local-build -- clang-tblgen llvm-tblgen
 
 # build wasm llvm
 CXXFLAGS="-Dwait4=__syscall_wait4" \
-LDFLAGS="-s EXPORT_ES6" \
+LDFLAGS="-s EXPORT_ES6 -s MODULARIZE" \
 emcmake cmake -G Ninja -S llvm -B web-build \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
