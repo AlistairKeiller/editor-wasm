@@ -2,7 +2,7 @@
 set -e
 
 # install nessesary pacakges
-apt-get install -y clang ninja-build libc++
+apt-get install -y clang ninja-build libc++-dev
 apt-get update
 apt-get upgrade -y
 
