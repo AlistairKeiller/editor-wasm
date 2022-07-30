@@ -16,7 +16,7 @@ tar -xf wasi-sysroot-16.0.tar.gz
 
 # build wasm llvm
 CXXFLAGS="-D wait4=__syscall_wait4" \
-EMCC_LINKER_FLAGS="-s EXPORTED_RUNTIME_METHODS=FS,callMain -s ALLOW_MEMORY_GROWTH -s EXPORT_ES6 -s MODULARIZE --preload-file wasi-sysroot" \
+LDFLAGS='"-s EXPORTED_RUNTIME_METHODS=FS,callMain" "-s ALLOW_MEMORY_GROWTH" "-s EXPORT_ES6" "-s MODULARIZE" "--preload-file wasi-sysroot"' \
 emcmake cmake -G Ninja -S llvm -B web-build \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
