@@ -16,7 +16,7 @@ mv wasi-sysroot wsysroot
 
 # build wasm llvm
 CXXFLAGS="-D wait4=__syscall_wait4" \
-LDFLAGS='-s EXPORTED_RUNTIME_METHODS=FS,callMain -s ALLOW_MEMORY_GROWTH -s EXPORT_ES6 -s MODULARIZE "--preload-file wsysroot"' \
+LDFLAGS="-s EXPORTED_RUNTIME_METHODS=FS,callMain -s ALLOW_MEMORY_GROWTH -s EXPORT_ES6 -s MODULARIZE --preload-file wsysroot" \
 emcmake cmake -G Ninja -S llvm -B web-build \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
@@ -25,6 +25,8 @@ emcmake cmake -G Ninja -S llvm -B web-build \
         -DLLVM_TABLEGEN=$PWD/local-build/bin/llvm-tblgen \
         -DCLANG_TABLEGEN=$PWD/local-build/bin/clang-tblgen \
         -DLLVM_ENABLE_PROJECTS="clang;lld;clang-tools-extra" \
-        -DLLVM_PARALLEL_LINK_JOBS=1
+        -DLLVM_PARALLEL_LINK_JOBS=1 \
+        -DLLVM_ENABLE_LIBCXX=ON \
+        -DLLVM_ENABLE_RUNTIMES=libcxx
 
 ninja -C web-build
