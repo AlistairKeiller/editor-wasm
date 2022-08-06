@@ -15,12 +15,13 @@ wget -qO- https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-16/
 mv wasi-sysroot wsysroot
 
 # build wasm llvm
+CXXFLAGS="-D wait4=__syscall_wait4" \
+LDFLAGS='-sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE --preload-file=wsysroot' \
 emcmake cmake -G Ninja -S llvm -B web-build \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
         -DLLVM_INCLUDE_TESTS=OFF \
         -DLLVM_BUILD_TOOLS=OFF \
-        -DCMAKE_CXX_FLAGS='-Dwait4=__syscall_wait4 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE --embed-file=wsysroot'
         -DLLVM_TABLEGEN=$PWD/local-build/bin/llvm-tblgen \
         -DCLANG_TABLEGEN=$PWD/local-build/bin/clang-tblgen \
         -DLLVM_ENABLE_PROJECTS="clang;lld;clang-tools-extra" \
