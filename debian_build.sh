@@ -1,8 +1,7 @@
 #!/bin/bash
-set -e
 
 # install nessesary pacakges
-apt-get install -y clang++ ninja-build libstdc++
+apt-get install -y ninja-build
 
 # install emscripten
 source emscripten.sh
