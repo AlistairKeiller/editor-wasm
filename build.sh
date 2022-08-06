@@ -13,6 +13,8 @@ ninja -C local-build -- clang-tblgen llvm-tblgen
 wget -qO- https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-16/wasi-sysroot-16.0.tar.gz | tar -xz
 mv wasi-sysroot wsysroot
 
+echo 'target_link_options(clang PUBLIC "--preload-file=wsysroot")' | tee -a CMakeLists.txt 
+
 # build wasm llvm
 CXXFLAGS="-Dwait4=__syscall_wait4" \
 LDFLAGS='-sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE' \
