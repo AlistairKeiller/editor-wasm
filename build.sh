@@ -22,6 +22,7 @@ emcmake cmake -G Ninja -S llvm -B web-build \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
         -DLLVM_INCLUDE_TESTS=OFF \
         -DLLVM_BUILD_TOOLS=OFF \
+        -DLLVM_ENABLE_THREADS=OFF \
         -DLLVM_TABLEGEN=$PWD/local-build/bin/llvm-tblgen \
         -DCLANG_TABLEGEN=$PWD/local-build/bin/clang-tblgen \
         -DLLVM_ENABLE_PROJECTS="clang;lld;clang-tools-extra" \
