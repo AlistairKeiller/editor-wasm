@@ -27,7 +27,6 @@ emcmake cmake -G Ninja -S llvm -B web-build \
         -DCLANG_TABLEGEN=$PWD/local-build/bin/clang-tblgen \
         -DLLVM_ENABLE_PROJECTS="clang;lld;clang-tools-extra" \
         -DLLVM_PARALLEL_LINK_JOBS=1 \
-        -DLLVM_ENABLE_LIBCXX=ON \
         -DLLVM_ENABLE_RUNTIMES=libcxx
 
 
