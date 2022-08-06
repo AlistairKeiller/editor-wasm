@@ -2,7 +2,7 @@
 set -e
 
 # install nessesary pacakges
-apt-get install -y clang ninja-build libstdc++-12-dev
+apt-get install -y clang ninja-build
 
 # install emscripten
 source emscripten.sh
