@@ -28,4 +28,4 @@ emcmake cmake -G Ninja -S llvm -B web-build \
         -DLLVM_ENABLE_PROJECTS="clang;lld;clang-tools-extra" \
         -DLLVM_PARALLEL_LINK_JOBS=1
 
-ninja -C web-build
+ninja -C web-build -- clang
