@@ -25,7 +25,7 @@ emcmake cmake -G Ninja -S llvm -B web-build \
         -DLLVM_BUILD_TOOLS=OFF \
         -DLLVM_TABLEGEN=$PWD/local-build/bin/llvm-tblgen \
         -DCLANG_TABLEGEN=$PWD/local-build/bin/clang-tblgen \
-        -DLLVM_ENABLE_PROJECTS="clang;lld;clang-tools-extra" \
+        -DLLVM_ENABLE_PROJECTS="clang" \
         -DLLVM_PARALLEL_LINK_JOBS=1
 
-ninja -C web-build -- clang
+ninja -C web-build
