@@ -25,6 +25,6 @@ emcmake cmake -G Ninja -S llvm -B web-build \
         -DCLANG_TABLEGEN=$PWD/local-build/bin/clang-tblgen \
         -DLLVM_ENABLE_PROJECTS="clang" \
         -DLLVM_PARALLEL_LINK_JOBS=1 \
-        -DCMAKE_CXX_FLAGS="-Dwait4=__syscall_wait4 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE --embed-file=wsysroot"
+        -DCMAKE_CXX_FLAGS="-Dwait4=__syscall_wait4 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE"
 
 ninja -C web-build
