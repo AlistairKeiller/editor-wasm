@@ -16,8 +16,6 @@ mv wasi-sysroot wsysroot
 echo 'target_link_options(clang PUBLIC "--embed-file=wsysroot")' | tee -a CMakeLists.txt 
 
 # build wasm llvm
-CXXFLAGS="-Dwait4=__syscall_wait4" \
-LDFLAGS='-sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE' \
 emcmake cmake -G Ninja -S llvm -B web-build \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
@@ -26,6 +24,7 @@ emcmake cmake -G Ninja -S llvm -B web-build \
         -DLLVM_TABLEGEN=$PWD/local-build/bin/llvm-tblgen \
         -DCLANG_TABLEGEN=$PWD/local-build/bin/clang-tblgen \
         -DLLVM_ENABLE_PROJECTS="clang" \
-        -DLLVM_PARALLEL_LINK_JOBS=1
+        -DLLVM_PARALLEL_LINK_JOBS=1 \
+        -DCMAKE_CXX_FLAGS="-Dwait4=__syscall_wait4 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE --preload-file=wsysroot"
 
 ninja -C web-build
