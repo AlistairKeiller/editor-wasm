@@ -13,7 +13,7 @@ ninja -C local-build -- clang-tblgen llvm-tblgen
 wget -qO- https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-16/wasi-sysroot-16.0.tar.gz | tar -xz
 mv wasi-sysroot wsysroot
 
-sed -i '/# Add appropriate flags for GCC/c\set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --embed-file=wsysroot")' ../clang/CMakeLists.txt
+sed -i '/# Add appropriate flags for GCC/c\set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --embed-file=wsysroot -Dwait4=__syscall_wait4 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE")' ../clang/CMakeLists.txt
 
 # build wasm llvm
 emcmake cmake -G Ninja -S llvm -B web-build \
@@ -24,7 +24,6 @@ emcmake cmake -G Ninja -S llvm -B web-build \
         -DLLVM_TABLEGEN=$PWD/local-build/bin/llvm-tblgen \
         -DCLANG_TABLEGEN=$PWD/local-build/bin/clang-tblgen \
         -DLLVM_ENABLE_PROJECTS="clang" \
-        -DLLVM_PARALLEL_LINK_JOBS=1 \
-        -DCMAKE_CXX_FLAGS="-Dwait4=__syscall_wait4 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE"
+        -DLLVM_PARALLEL_LINK_JOBS=1
 
 ninja -C web-build
