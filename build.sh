@@ -13,7 +13,7 @@ ninja -C local-build -- clang-tblgen llvm-tblgen
 wget -qO- https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-16/wasi-sysroot-16.0.tar.gz | tar -xz
 mv wasi-sysroot wsysroot
 
-sed -i '/# Add appropriate flags for GCC/c\set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --embed-file=wsysroot")' clang/CMakeLists.txt
+sed -i '/# Add appropriate flags for GCC/c\set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --preload-file=wsysroot")' clang/CMakeLists.txt
 
 # build wasm llvm
 emcmake cmake -G Ninja -S llvm -B web-build \
