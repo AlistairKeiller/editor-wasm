@@ -16,8 +16,7 @@ mv wasi-sysroot wsysroot
 # sed -i '/# Add appropriate flags for GCC/c\set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --preload-file=wsysroot")' clang/CMakeLists.txt
 
 # build wasm llvm
-CXXFLAGS="-Dwait4=__syscall_wait4" \
-LDFLAGS='-sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE' \
+CXXFLAGS="-Dwait4=__syscall_wait4 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE" \
 emcmake cmake -G Ninja -S llvm -B web-build \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
