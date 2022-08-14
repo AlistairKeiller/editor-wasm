@@ -24,7 +24,8 @@ cmake -G Ninja -S llvm-project/llvm -B host-llvm-build \
         -DLLVM_INCLUDE_BENCHMARKS=OFF \
         -DLLVM_INCLUDE_EXAMPLES=OFF \
         -DLLVM_INCLUDE_TESTS=OFF \
-        -DLLVM_INCLUDE_TOOLS=OFF
+        -DLLVM_INCLUDE_TOOLS=OFF \
+        -DLLVM_BUILD_TOOLS=OFF
 ninja -C host-llvm-build
 ninja install -C host-llvm-build
 
