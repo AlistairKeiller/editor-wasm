@@ -1,6 +1,9 @@
 #!/bin/bash
 # inspired by https://github.com/soedirgo/llvm-wasm
 
+git clone https://github.com/emscripten-core/emscripten
+export PATH=$PATH:$PWD/emscripten
+
 # download llvm
 git clone https://github.com/llvm/llvm-project
 cd llvm-project
