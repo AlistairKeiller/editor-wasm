@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: sudo apt-get install -y ninja-build
+      - run: sudo apt-get install -y ninja-build lld
 
       - run: sudo bash build.sh
 
