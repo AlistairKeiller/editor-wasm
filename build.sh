@@ -3,8 +3,9 @@
 
 # build tblgen for host
 # git clone https://github.com/llvm/llvm-project
+# cd llvm-project
 wget -qO- https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-14.0.6.tar.gz | tar -xz
-cd llvm-project
+cd llvmorg-14.0.6
 cmake -G Ninja -S llvm -B local-build \
         -DCMAKE_BUILD_TYPE=Release \
         -DLLVM_ENABLE_PROJECTS=clang
