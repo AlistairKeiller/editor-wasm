@@ -2,8 +2,7 @@
 set -e
 
 # install nessesary pacakges
-apt-get purge cmake
-apt-get install -y ninja-build # cmake=3.16.3-1ubuntu1
+apt-get install -y ninja-build
 
 # install emscripten
 source emscripten.sh
