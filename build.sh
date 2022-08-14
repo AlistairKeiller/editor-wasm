@@ -22,7 +22,7 @@ ninja -C host-llvm-build
 export PATH=$PWD/host-llvm-build/bin:$PATH
 
 # install emscripten
-git clone https://github.com/emscripten-core/emscripten
+git clone https://github.com/AlistairKeiller/emscripten
 export PATH=$PWD/emscripten:$PATH
 emcc --generate-config
 emcc --check
