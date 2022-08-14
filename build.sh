@@ -43,18 +43,18 @@ emcc emscripten/test/hello_world.cpp
 # set_source_files_properties(foo.cpp PROPERTIES COMPILE_FLAGS -Wno-effc++)
 
 # build wasm llvm
-# CXXFLAGS="-Dwait4=__syscall_wait4" \
-# LDFLAGS='-sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE' \
-# emcmake cmake -G Ninja -S llvm-project/llvm -B web-build \
-#         -DCMAKE_BUILD_TYPE=MinSizeRel \
-#         -DLLVM_ENABLE_PROJECTS="clang" \2
-#         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
-#         -DLLVM_TABLEGEN=$PWD/host-llvm-build/bin/llvm-tblgen \
-#         -DCLANG_TABLEGEN=$PWD/host-llvm-build/bin/clang-tblgen \
-#         -DLLVM_PARALLEL_LINK_JOBS=1 \
-#         -DLLVM_INCLUDE_BENCHMARKS=OFF \
-#         -DLLVM_INCLUDE_EXAMPLES=OFF \
-#         -DLLVM_INCLUDE_TESTS=OFF \
-#         -DLLVM_INCLUDE_TOOLS=OFF \
-#         -DLLVM_BUILD_TOOLS=OFF \
-# ninja -C web-build
+CXXFLAGS="-Dwait4=__syscall_wait4" \
+LDFLAGS='-sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE' \
+emcmake cmake -G Ninja -S llvm-project/llvm -B web-build \
+        -DCMAKE_BUILD_TYPE=MinSizeRel \
+        -DLLVM_ENABLE_PROJECTS="clang" \
+        -DLLVM_TARGETS_TO_BUILD=WebAssembly \
+        -DLLVM_TABLEGEN=$PWD/host-llvm-build/bin/llvm-tblgen \
+        -DCLANG_TABLEGEN=$PWD/host-llvm-build/bin/clang-tblgen \
+        -DLLVM_PARALLEL_LINK_JOBS=1 \
+        -DLLVM_INCLUDE_BENCHMARKS=OFF \
+        -DLLVM_INCLUDE_EXAMPLES=OFF \
+        -DLLVM_INCLUDE_TESTS=OFF \
+        -DLLVM_INCLUDE_TOOLS=OFF \
+        -DLLVM_BUILD_TOOLS=OFF
+ninja -C web-build
