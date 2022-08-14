@@ -41,6 +41,7 @@ LDFLAGS='-sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_E
 emcmake cmake -G Ninja -S llvm-project/llvm -B web-build \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
+        -DLLVM_INCLUDE_EXAMPLES=OFF \
         -DLLVM_INCLUDE_TESTS=OFF \
         -DLLVM_BUILD_TOOLS=OFF \
         -DLLVM_TABLEGEN=$PWD/host-llvm-build/bin/llvm-tblgen \
