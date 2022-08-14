@@ -3,12 +3,11 @@
 
 git clone https://github.com/emscripten-core/emscripten
 export PATH=$PATH:$PWD/emscripten
+emcc --generate-config
 
 # download llvm
 git clone https://github.com/llvm/llvm-project
 cd llvm-project
-# wget -qO- https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-14.0.6.tar.gz | tar -xz
-# cd llvm-project-llvmorg-14.0.6
 
 # build tblgen for host
 cmake -G Ninja -S llvm -B local-build \
@@ -21,8 +20,6 @@ ninja -C local-build -- clang-tblgen llvm-tblgen
 # make CC=/bin/clang \
 #      AR=/bin/llvm-ar \
 #      NM=/bin/llvm-nm
-# wget -qO- https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-16/wasi-sysroot-16.0.tar.gz | tar -xz
-# mv wasi-sysroot wsysroot
 
 # set_source_files_properties(foo.cpp PROPERTIES COMPILE_FLAGS -Wno-effc++)
 
