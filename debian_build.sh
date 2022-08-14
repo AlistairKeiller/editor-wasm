@@ -2,7 +2,7 @@
 set -e
 
 # install nessesary pacakges
-sudo apt purge --auto-remove cmake
+apt-get purge cmake
 wget https://apt.kitware.com/kitware-archive.sh
 source kitware-archive.sh
 
