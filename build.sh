@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # inspired by https://github.com/soedirgo/llvm-wasm
 
 # build tblgen for host
@@ -17,7 +17,6 @@ mv wasi-sysroot wsysroot
 # set_source_files_properties(foo.cpp PROPERTIES COMPILE_FLAGS -Wno-effc++)
 
 # build wasm llvm
-# LDFLAG="-sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE" \
 CXXFLAGS="-Dwait4=__syscall_wait4" \
 LDFLAGS='-sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE' \
 emcmake cmake -G Ninja -S llvm -B web-build \
