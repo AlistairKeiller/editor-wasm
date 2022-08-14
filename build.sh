@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # inspired by https://github.com/soedirgo/llvm-wasm
 
 # download llvm

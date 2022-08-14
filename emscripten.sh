@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 git clone https://github.com/emscripten-core/emsdk
 cd emsdk
 ./emsdk install latest
