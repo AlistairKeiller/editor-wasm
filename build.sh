@@ -3,10 +3,6 @@
 
 set -e
 
-# install emscripten
-git clone https://github.com/emscripten-core/emscripten
-export PATH=$PWD/emscripten:$PATH
-
 # build binaryen for host
 git clone https://github.com/WebAssembly/binaryen
 cmake -G Ninja -S binaryen -B binaryen-build \
@@ -14,10 +10,8 @@ cmake -G Ninja -S binaryen -B binaryen-build \
 ninja -C binaryen-build
 export PATH=$PWD/binaryen-build/bin:$PATH
 
-# download llvm
-git clone https://github.com/llvm/llvm-project
-
 # build llvm for host
+git clone https://github.com/llvm/llvm-project
 cmake -G Ninja -S llvm-project/llvm -B host-llvm-build \
         -DCMAKE_BUILD_TYPE=Release \
         -DLLVM_ENABLE_PROJECTS="lld;clang" \
@@ -27,7 +21,9 @@ cmake -G Ninja -S llvm-project/llvm -B host-llvm-build \
 ninja -C host-llvm-build
 export PATH=$PWD/host-llvm-build/bin:$PATH
 
-# test emscripten
+# install emscripten
+git clone https://github.com/emscripten-core/emscripten
+export PATH=$PWD/emscripten:$PATH
 emcc --generate-config
 emcc --check
 
