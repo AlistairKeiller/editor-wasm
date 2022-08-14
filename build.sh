@@ -6,6 +6,8 @@ set -e
 # build binaryen for host
 git clone https://github.com/WebAssembly/binaryen
 cmake -G Ninja -S binaryen -B binaryen-build \
+        -DCMAKE_C_COMPILER=clang \
+        -DCMAKE_CXX_COMPILER=clang++ \
         -DBUILD_TESTS=OFF
 ninja -C binaryen-build
 ninja install -C binaryen-build
