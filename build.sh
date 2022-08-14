@@ -8,7 +8,7 @@ git clone https://github.com/WebAssembly/binaryen
 cmake -G Ninja -S binaryen -B binaryen-build \
         -DBUILD_TESTS=OFF
 ninja -C binaryen-build
-cmake --install binaryen-build
+ninja install -C binaryen-build
 
 # build llvm for host
 git clone https://github.com/llvm/llvm-project
@@ -22,7 +22,7 @@ cmake -G Ninja -S llvm-project/llvm -B host-llvm-build \
         -DLLVM_INCLUDE_EXAMPLES=OFF \
         -DLLVM_INCLUDE_TESTS=OFF
 ninja -C host-llvm-build
-cmake --install host-llvm-build
+ninja install -C host-llvm-build
 
 # install emscripten
 git clone https://github.com/AlistairKeiller/emscripten
