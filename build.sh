@@ -1,6 +1,8 @@
 #!/bin/bash
 # inspired by https://github.com/soedirgo/llvm-wasm
 
+set -e
+
 # install emscripten
 git clone https://github.com/emscripten-core/emscripten
 export PATH=$PWD/emscripten:$PATH
