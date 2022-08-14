@@ -1,9 +1,11 @@
 #!/bin/bash
 # inspired by https://github.com/soedirgo/llvm-wasm
 
+# install emscripten
 git clone https://github.com/emscripten-core/emscripten
 export PATH=$PATH:$PWD/emscripten
 emcc --generate-config
+emcc --check
 
 # download llvm
 git clone https://github.com/llvm/llvm-project
@@ -15,7 +17,7 @@ cmake -G Ninja -S llvm -B local-build \
         -DLLVM_ENABLE_PROJECTS=clang
 ninja -C local-build -- clang-tblgen llvm-tblgen
 
-# download sysroot
+# build sysroot
 # git clone https://github.com/WebAssembly/wasi-libc
 # make CC=/bin/clang \
 #      AR=/bin/llvm-ar \
