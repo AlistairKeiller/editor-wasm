@@ -1,6 +1,10 @@
 #!/bin/bash
 # inspired by https://github.com/soedirgo/llvm-wasm
 
+# install emscripten
+git clone https://github.com/emscripten-core/emscripten
+export PATH=$PWD/emscripten:$PATH
+
 # download llvm
 git clone https://github.com/llvm/llvm-project
 cd llvm-project
@@ -15,9 +19,7 @@ cmake -G Ninja -S llvm -B local-build \
 ninja -C local-build
 export PATH=$PWD/local-build:$PATH
 
-# install emscripten
-git clone https://github.com/emscripten-core/emscripten
-export PATH=$PWD/emscripten:$PATH
+# test emscripten
 emcc --generate-config
 emcc --check
 
