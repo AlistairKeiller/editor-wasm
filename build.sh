@@ -1,21 +1,25 @@
 #!/bin/bash
 # inspired by https://github.com/soedirgo/llvm-wasm
 
-# install emscripten
-git clone https://github.com/emscripten-core/emscripten
-export PATH=$PATH:$PWD/emscripten
-emcc --generate-config
-emcc --check
-
 # download llvm
 git clone https://github.com/llvm/llvm-project
 cd llvm-project
 
-# build tblgen for host
+# build llvm for host
 cmake -G Ninja -S llvm -B local-build \
         -DCMAKE_BUILD_TYPE=Release \
-        -DLLVM_ENABLE_PROJECTS=clang
-ninja -C local-build -- clang-tblgen llvm-tblgen
+        -DLLVM_ENABLE_PROJECTS="lld;clang" \
+        -DLLVM_TARGETS_TO_BUILD="host;WebAssembly" \
+        -DLLVM_INCLUDE_EXAMPLES=OFF \
+        -DLLVM_INCLUDE_TESTS=OFF
+ninja -C local-build
+export PATH=$PWD/local-build:$PATH
+
+# install emscripten
+git clone https://github.com/emscripten-core/emscripten
+export PATH=$PWD/emscripten:$PATH
+emcc --generate-config
+emcc --check
 
 # build sysroot
 # git clone https://github.com/WebAssembly/wasi-libc
