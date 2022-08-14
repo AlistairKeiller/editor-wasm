@@ -15,6 +15,8 @@ git clone https://github.com/llvm/llvm-project
 cmake -G Ninja -S llvm-project/llvm -B host-llvm-build \
         -DCMAKE_BUILD_TYPE=Release \
         -DLLVM_USE_LINKER=lld \
+        -DCMAKE_C_COMPILER=clang \
+        -DCMAKE_CXX_COMPILER=clang++ \
         -DLLVM_ENABLE_PROJECTS="lld;clang" \
         -DLLVM_TARGETS_TO_BUILD="host;WebAssembly" \
         -DLLVM_INCLUDE_EXAMPLES=OFF \
