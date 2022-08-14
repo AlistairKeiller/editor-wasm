@@ -8,7 +8,7 @@ git clone https://github.com/WebAssembly/binaryen
 cmake -G Ninja -S binaryen -B binaryen-build \
         -DBUILD_TESTS=OFF
 ninja -C binaryen-build
-export PATH=$PWD/binaryen-build/bin:$PATH
+cmake --install binaryen-build
 
 # build llvm for host
 git clone https://github.com/llvm/llvm-project
@@ -22,14 +22,13 @@ cmake -G Ninja -S llvm-project/llvm -B host-llvm-build \
         -DLLVM_INCLUDE_EXAMPLES=OFF \
         -DLLVM_INCLUDE_TESTS=OFF
 ninja -C host-llvm-build
-export PATH=$PWD/host-llvm-build/bin:$PATH
+cmake --install host-llvm-build
 
 # install emscripten
 git clone https://github.com/AlistairKeiller/emscripten
-export PATH=$PWD/emscripten:$PATH
-emcc --generate-config
-emcc --check
-emcc emscripten/test/hello_world.cpp
+./emscripten/emcc --generate-config
+./emscripten/emcc --check
+./emscripten/emcc emscripten/test/hello_world.cpp
 
 # build sysroot
 # git clone https://github.com/WebAssembly/wasi-libc
