@@ -21,8 +21,10 @@ cmake -G Ninja -S llvm-project/llvm -B host-llvm-build \
         -DLLVM_USE_LINKER=lld \
         -DLLVM_ENABLE_PROJECTS="lld;clang" \
         -DLLVM_TARGETS_TO_BUILD="host;WebAssembly" \
+        -DLLVM_INCLUDE_BENCHMARKS=OFF \
         -DLLVM_INCLUDE_EXAMPLES=OFF \
-        -DLLVM_INCLUDE_TESTS=OFF
+        -DLLVM_INCLUDE_TESTS=OFF \
+        -DLLVM_INCLUDE_TOOLS=OFF \
 ninja -C host-llvm-build
 ninja install -C host-llvm-build
 
@@ -45,15 +47,15 @@ git clone https://github.com/AlistairKeiller/emscripten
 # LDFLAGS='-sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE' \
 # emcmake cmake -G Ninja -S llvm-project/llvm -B web-build \
 #         -DCMAKE_BUILD_TYPE=MinSizeRel \
+#         -DLLVM_ENABLE_PROJECTS="clang" \
 #         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
+#         -DLLVM_TABLEGEN=$PWD/host-llvm-build/bin/llvm-tblgen \
+#         -DCLANG_TABLEGEN=$PWD/host-llvm-build/bin/clang-tblgen \
+#         -DLLVM_PARALLEL_LINK_JOBS=1 \
 #         -DLLVM_INCLUDE_BENCHMARKS=OFF \
 #         -DLLVM_INCLUDE_EXAMPLES=OFF \
 #         -DLLVM_INCLUDE_TESTS=OFF \
 #         -DLLVM_INCLUDE_TOOLS=OFF \
 #         -DLLVM_BUILD_TOOLS=OFF \
-#         -DLLVM_TABLEGEN=$PWD/host-llvm-build/bin/llvm-tblgen \
-#         -DCLANG_TABLEGEN=$PWD/host-llvm-build/bin/clang-tblgen \
-#         -DLLVM_ENABLE_PROJECTS="clang" \
-#         -DLLVM_PARALLEL_LINK_JOBS=1
 
 # ninja -C web-build
