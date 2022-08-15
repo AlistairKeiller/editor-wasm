@@ -36,10 +36,10 @@ cd ..
 emcc --generate-config
 
 # build sysroot
-# git clone https://github.com/WebAssembly/wasi-libc
-# make CC=/bin/clang \
-#      AR=/bin/llvm-ar \
-#      NM=/bin/llvm-nm
+git clone https://github.com/WebAssembly/wasi-libc
+make CC=$PWD/host-llvm-build/bin/clang \
+     AR=$PWD/host-llvm-build/bin/llvm-ar \
+     NM=$PWD/host-llvm-build/bin/llvm-nm
 
 # set_source_files_properties(foo.cpp PROPERTIES COMPILE_FLAGS -Wno-effc++)
 
