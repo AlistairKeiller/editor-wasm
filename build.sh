@@ -29,6 +29,7 @@ export PATH=$PWD/host-llvm-build/bin:$PATH
 
 # install emscripten
 git clone https://github.com/AlistairKeiller/emscripten
+npm install emscripten
 export PATH=$PWD/emscripten:$PATH
 emcc --generate-config
 emcc --check
