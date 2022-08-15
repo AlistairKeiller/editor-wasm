@@ -44,8 +44,6 @@ cd ..
 sed -i '1s/^/set_source_files_properties(Clang.cpp PROPERTIES COMPILE_FLAGS --preload-file .)\n/' llvm-project/llvm/CMakeLists.txt
 
 # build wasm llvm
-CXXFLAGS="-Dwait4=__syscall_wait4" \
-LDFLAGS='-sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE' \
 emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
         -DLLVM_ENABLE_PROJECTS="clang" \
@@ -55,5 +53,6 @@ emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
         -DLLVM_PARALLEL_LINK_JOBS=1 \
         -DLLVM_INCLUDE_BENCHMARKS=OFF \
         -DLLVM_INCLUDE_EXAMPLES=OFF \
-        -DLLVM_INCLUDE_TESTS=OFF
+        -DLLVM_INCLUDE_TESTS=OFF \
+        -DCMAKE_CXX_FLAGS='-Dwait4=__syscall_wait4 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE'
 ninja -C web-llvm-build
