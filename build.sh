@@ -46,7 +46,7 @@ make CC=$PWD/host-llvm-build/bin/clang \
 # build wasm llvm
 CXXFLAGS="-Dwait4=__syscall_wait4" \
 LDFLAGS='-sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE' \
-emcmake cmake -G Ninja -S llvm-project/llvm -B web-build \
+emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
         -DLLVM_ENABLE_PROJECTS="clang" \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
@@ -58,4 +58,4 @@ emcmake cmake -G Ninja -S llvm-project/llvm -B web-build \
         -DLLVM_INCLUDE_TESTS=OFF \
         -DLLVM_INCLUDE_TOOLS=OFF \
         -DLLVM_BUILD_TOOLS=OFF
-ninja -C web-build
+ninja -C web-llvm-build
