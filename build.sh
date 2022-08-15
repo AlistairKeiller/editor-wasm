@@ -39,6 +39,7 @@ emcc --generate-config
 git clone https://github.com/WebAssembly/wasi-libc
 cd wasi-libc
 make
+cd ..
 
 sed -i '1s/^/set_source_files_properties(Clang.cpp PROPERTIES COMPILE_FLAGS --preload-file .)\n/' llvm-project/llvm/CMakeLists.txt
 
