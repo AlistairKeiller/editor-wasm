@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # inspired by https://github.com/soedirgo/llvm-wasm
 
 set -e

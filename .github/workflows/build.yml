@@ -13,7 +13,7 @@ jobs:
 
       - run: sudo apt-get install -y ninja-build
 
-      - run: sudo bash build.sh
+      - run: sudo sh build.sh
 
       - uses: actions/upload-artifact@v3
         with:
