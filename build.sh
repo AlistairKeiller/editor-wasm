@@ -31,9 +31,6 @@ export PATH=$PWD/host-llvm-build/bin:$PATH
 git clone https://github.com/AlistairKeiller/emscripten
 npm install emscripten
 export PATH=$PWD/emscripten:$PATH
-emcc --generate-config
-emcc --check
-emcc emscripten/test/hello_world.cpp
 
 # build sysroot
 # git clone https://github.com/WebAssembly/wasi-libc
