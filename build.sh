@@ -37,9 +37,7 @@ emcc --generate-config
 
 # build sysroot
 git clone https://github.com/WebAssembly/wasi-libc
-make CC=$PWD/host-llvm-build/bin/clang \
-     AR=$PWD/host-llvm-build/bin/llvm-ar \
-     NM=$PWD/host-llvm-build/bin/llvm-nm
+make
 
 # set_source_files_properties(foo.cpp PROPERTIES COMPILE_FLAGS -Wno-effc++)
 
