@@ -55,7 +55,5 @@ emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
         -DLLVM_PARALLEL_LINK_JOBS=1 \
         -DLLVM_INCLUDE_BENCHMARKS=OFF \
         -DLLVM_INCLUDE_EXAMPLES=OFF \
-        -DLLVM_INCLUDE_TESTS=OFF \
-        -DLLVM_INCLUDE_TOOLS=OFF \
-        -DLLVM_BUILD_TOOLS=OFF
+        -DLLVM_INCLUDE_TESTS=OFF
 ninja -C web-llvm-build
