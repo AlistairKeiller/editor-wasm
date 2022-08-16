@@ -48,8 +48,6 @@ emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
         -DLLVM_ENABLE_PROJECTS="clang" \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
-        -DLLVM_TABLEGEN=$PWD/host-llvm-build/bin/llvm-tblgen \
-        -DCLANG_TABLEGEN=$PWD/host-llvm-build/bin/clang-tblgen \
         -DLLVM_PARALLEL_LINK_JOBS=1 \
         -DLLVM_INCLUDE_BENCHMARKS=OFF \
         -DLLVM_INCLUDE_EXAMPLES=OFF \
