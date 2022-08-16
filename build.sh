@@ -41,7 +41,7 @@ cd wasi-libc
 make
 cd ..
 
-# sed -i '1s/^/set_source_files_properties(Clang.cpp PROPERTIES COMPILE_FLAGS "--preload-file .")\n/' llvm-project/llvm/CMakeLists.txt
+sed -i '1s/^/set_source_files_properties(Clang.cpp PROPERTIES COMPILE_FLAGS --preload-file=.)\n/' llvm-project/llvm/CMakeLists.txt
 
 # build wasm llvm
 emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
