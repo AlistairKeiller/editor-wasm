@@ -10,21 +10,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      
-      - run: echo $XDG_CACHE_HOME
-      
-      
-      
-#       - uses: actions/cache@v3
-#         with:
-#           path: $HOME/.config/ccache
-#           key: ccache
 
-#       - run: sudo apt-get install -y ninja-build ccache
+      - uses: actions/cache@v3
+        with:
+          path: ~/.config/ccache
+          key: ccache
 
-#       - run: sudo sh build.sh
+      - run: sudo apt-get install -y ninja-build ccache
 
-#       - uses: actions/upload-artifact@v3
-#         with:
-#             name: bin
-#             path: ${{ github.workspace }}/web-llvm-build/bin/
+      - run: sudo sh build.sh
+
+      - uses: actions/upload-artifact@v3
+        with:
+            name: bin
+            path: ${{ github.workspace }}/web-llvm-build/bin/
