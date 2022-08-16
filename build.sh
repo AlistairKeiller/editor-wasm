@@ -15,7 +15,8 @@ cmake -G Ninja -S llvm-project/llvm -B host-llvm-build \
         -DLLVM_INCLUDE_BENCHMARKS=OFF \
         -DLLVM_INCLUDE_EXAMPLES=OFF \
         -DLLVM_INCLUDE_TESTS=OFF \
-        -DLLVM_CCACHE_BUILD=ON
+        -DLLVM_CCACHE_BUILD=ON \
+        -DLLVM_CCACHE_DIR=~/.cache/ccache
 ninja -C host-llvm-build
 export PATH=$PWD/host-llvm-build/bin:$PATH
 
@@ -56,5 +57,6 @@ emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
         -DLLVM_INCLUDE_EXAMPLES=OFF \
         -DLLVM_INCLUDE_TESTS=OFF \
         -DCMAKE_CXX_FLAGS='-Dwait4=__syscall_wait4 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE' \
-        -DLLVM_CCACHE_BUILD=ON
+        -DLLVM_CCACHE_BUILD=ON \
+        -DLLVM_CCACHE_DIR=~/.cache/ccache
 ninja -C web-llvm-build -- clang
