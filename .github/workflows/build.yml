@@ -16,7 +16,7 @@ jobs:
           path: ~/.cache/ccache
           key: ccache
 
-      - run: sudo apt-get install -y ninja-build
+      - run: sudo apt-get install -y ninja-build ccache
 
       - run: sudo sh build.sh
 
