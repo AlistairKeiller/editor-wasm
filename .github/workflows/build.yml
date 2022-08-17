@@ -13,7 +13,7 @@ jobs:
 
       - uses: actions/cache@v3
         with:
-          path: ~/.config/ccache
+          path: ~/.cache/ccache
           key: ccache
 
       - run: sudo apt-get install -y ninja-build ccache
