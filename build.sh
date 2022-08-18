@@ -3,7 +3,7 @@
 
 set -e
 
-mkdir -p ~/.cache/ccache
+mkdir -p /tmp/ccache
 
 # build llvm for host
 git clone https://github.com/llvm/llvm-project
@@ -15,7 +15,7 @@ cmake -G Ninja -S llvm-project/llvm -B host-llvm-build \
         -DLLVM_INCLUDE_EXAMPLES=OFF \
         -DLLVM_INCLUDE_TESTS=OFF \
         -DLLVM_CCACHE_BUILD=ON \
-        -DLLVM_CCACHE_DIR=$HOME/.cache/ccache
+        -DLLVM_CCACHE_DIR=/tmp/ccache
 ninja -C host-llvm-build
 # export PATH=$PWD/host-llvm-build/bin:$PATH
 
