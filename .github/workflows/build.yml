@@ -11,18 +11,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-#       - uses: actions/cache@v3
-#         with:
-#           path: /tmp/ccache
-#           key: ccache
+      - uses: actions/cache@v3
+        with:
+          path: /tmp/ccache
+          key: ccache
 
-#       - run: sudo apt-get install -y ninja-build ccache
+      - run: sudo apt-get install -y ninja-build ccache
 
-#       - run: sudo sh build.sh
+      - run: sudo sh build.sh
 
-#       - uses: actions/upload-artifact@v3
-#         with:
-#             name: bin
-#             path: ${{ github.workspace }}/web-llvm-build/bin/
-
-      - run: gh api --method DELETE -H "Accept: application/vnd.github+json" /repos/AlistairKeiller/editor-wasm/actions/caches/ccache
+      - uses: actions/upload-artifact@v3
+        with:
+            name: bin
+            path: ${{ github.workspace }}/web-llvm-build/bin/
