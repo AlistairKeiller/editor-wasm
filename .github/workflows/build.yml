@@ -23,7 +23,7 @@ jobs:
       
       - name: delete ccache cache so it can be overwritten
         if: steps.cache.outputs.cache-hit == 'true'
-        run: gh api /repos/AlistairKeiller/editor-wasm/actions/caches
+        run: gh api --method DELETE /repos/AlistairKeiller/editor-wasm/actions/caches
 
 
 #       - name: install dependencies
