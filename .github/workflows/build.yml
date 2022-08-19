@@ -28,4 +28,4 @@ jobs:
 #             name: bin
 #             path: ${{ github.workspace }}/web-llvm-build/bin/
 
-      - run: gh api --method DELETE /repos/OWNER/REPO/actions/caches/CACHE_ID
+      - run: gh api --method DELETE /repos/AlistairKeiller/editor-wasm/actions/caches/ccache
