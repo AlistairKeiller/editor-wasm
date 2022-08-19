@@ -14,18 +14,26 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-#       - uses: actions/cache@v3
-#         with:
-#           path: /tmp/ccache
-#           key: ccache
+      - name: download ccache cache
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: /tmp/ccache
+          key: ccache
+      
+      - name: delete ccache cache so it can be overwritten
+        if: steps.cache.outputs.cache-hit == 'true'
+        run: gh api /repos/AlistairKeiller/editor-wasm/actions/caches
 
-#       - run: sudo apt-get install -y ninja-build ccache
 
-#       - run: sudo sh build.sh
+#       - name: install dependencies
+#         run: sudo apt-get install -y ninja-build ccache
 
-#       - uses: actions/upload-artifact@v3
+#       - name: build
+#         run: sudo sh build.sh
+
+#       - name: upload bin
+#         uses: actions/upload-artifact@v3
 #         with:
 #             name: bin
 #             path: ${{ github.workspace }}/web-llvm-build/bin/
-
-      - run: gh api --method DELETE /repos/AlistairKeiller/editor-wasm/actions/caches/ccache
