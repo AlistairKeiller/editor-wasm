@@ -40,7 +40,7 @@ cd wasi-libc
 make
 cd ..
 
-sed -i '491i set_target_properties(clang PROPERTIES COMPILE_FLAGS --preload-file=.)' llvm-project/clang/CMakeLists.txt
+sed -i '1i set_target_properties(clang PROPERTIES COMPILE_FLAGS --preload-file=.)' llvm-project/clang/CMakeLists.txt
 
 # build wasm llvm
 emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
