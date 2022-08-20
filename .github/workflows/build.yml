@@ -25,14 +25,14 @@ jobs:
         if: steps.cache.outputs.cache-hit == 'true'
         run: gh api --method DELETE /repos/AlistairKeiller/editor-wasm/actions/caches?key=ccache
 
-#       - name: install dependencies
-#         run: sudo apt-get install -y ninja-build ccache
+      - name: install dependencies
+        run: sudo apt-get install -y ninja-build ccache
 
-#       - name: build
-#         run: sudo sh build.sh
+      - name: build
+        run: sudo sh build.sh
 
-#       - name: upload bin
-#         uses: actions/upload-artifact@v3
-#         with:
-#             name: bin
-#             path: ${{ github.workspace }}/web-llvm-build/bin/
+      - name: upload bin
+        uses: actions/upload-artifact@v3
+        with:
+            name: bin
+            path: ${{ github.workspace }}/web-llvm-build/bin/
