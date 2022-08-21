@@ -38,7 +38,7 @@ cd wasi-libc
 make
 cd ..
 
-sed -i '5i set_target_properties(clang PROPERTIES LINK_FLAGS --preload-file=../wasi-libc)' llvm-project/clang/tools/CMakeLists.txt
+sed -i '5i set_target_properties(clang PROPERTIES LINK_FLAGS --preload-file=../wasi-libc/sysroot)' llvm-project/clang/tools/CMakeLists.txt
 
 # build wasm llvm
 emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
