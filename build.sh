@@ -25,7 +25,8 @@ ninja -C binaryen-build
 export PATH=$PWD/binaryen-build/bin:$PATH
 
 # install emscripten
-git clone https://github.com/AlistairKeiller/emscripten
+# git clone https://github.com/AlistairKeiller/emscripten
+https://github.com/emscripten-core/emscripten
 cd emscripten
 npm i
 export PATH=$PWD:$PATH
