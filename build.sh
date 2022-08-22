@@ -39,7 +39,13 @@ cd wasi-libc
 make
 cd ..
 
-echo "int main() { return 0; }" >> test.cpp
+echo """#include <iosfwd>
+#if defined(__GLIBCXX__)
+#if !defined(_GLIBCXX_RELEASE) || _GLIBCXX_RELEASE < ${LIBSTDCXX_MIN}
+#error Unsupported libstdc++ version
+#endif
+#endif
+int main() { return 0; }""" > test.cpp
 
 emcc test.cpp
 
