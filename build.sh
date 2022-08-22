@@ -7,6 +7,7 @@ set -e
 git clone https://github.com/llvm/llvm-project
 cmake -G Ninja -S llvm-project/llvm -B host-llvm-build \
         -DCMAKE_BUILD_TYPE=Release \
+        -DLLVM_USE_LINKER=lld \
         -DLLVM_ENABLE_PROJECTS="lld;clang" \
         -DLLVM_TARGETS_TO_BUILD="host;WebAssembly" \
         -DLLVM_INCLUDE_BENCHMARKS=OFF \
