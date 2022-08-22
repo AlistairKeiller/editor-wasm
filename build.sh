@@ -41,7 +41,7 @@ cd ..
 
 echo """#include <iosfwd>
 #if defined(__GLIBCXX__)
-#if !defined(_GLIBCXX_RELEASE) || _GLIBCXX_RELEASE < ${LIBSTDCXX_MIN}
+#if !defined(_GLIBCXX_RELEASE) || _GLIBCXX_RELEASE < 7
 #error Unsupported libstdc++ version
 #endif
 #endif
