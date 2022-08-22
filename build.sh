@@ -38,7 +38,7 @@ cd wasi-libc
 make
 cd ..
 
-sed -i '5i set_target_properties(clang PROPERTIES LINK_FLAGS --preload-file=../wasi-libc/sysroot)' llvm-project/clang/tools/CMakeLists.txt
+sed -i '5i set_target_properties(clang PROPERTIES LINK_FLAGS --preload-file=sysroot)' llvm-project/clang/tools/CMakeLists.txt
 
 # build wasm llvm
 emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
@@ -54,4 +54,5 @@ emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
         -DCMAKE_CXX_FLAGS='-Dwait4=__syscall_wait4 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE' \
         -DLLVM_CCACHE_BUILD=ON \
         -DLLVM_CCACHE_DIR=/tmp/ccache
+mv wasi-libc/sysroot web-llvm-build
 ninja -C web-llvm-build -- clang
