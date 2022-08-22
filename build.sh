@@ -39,6 +39,10 @@ cd wasi-libc
 make
 cd ..
 
+echo "int main() { return 0; }" >> test.cpp
+
+emcc test.cpp
+
 # build wasm llvm
 # sed -i '5i set_target_properties(clang PROPERTIES LINK_FLAGS --embed-file=sysroot)' llvm-project/clang/tools/CMakeLists.txt
 emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
