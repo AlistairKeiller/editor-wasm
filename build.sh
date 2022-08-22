@@ -40,7 +40,7 @@ make
 cd ..
 
 # build wasm llvm
-sed -i '5i set_target_properties(clang PROPERTIES LINK_FLAGS --embed-file=sysroot)' llvm-project/clang/tools/CMakeLists.txt
+# sed -i '5i set_target_properties(clang PROPERTIES LINK_FLAGS --embed-file=sysroot)' llvm-project/clang/tools/CMakeLists.txt
 emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
         -DLLVM_ENABLE_PROJECTS="clang" \
