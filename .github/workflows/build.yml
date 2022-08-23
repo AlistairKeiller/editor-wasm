@@ -4,8 +4,6 @@ on:
   push:
     branches: [ "main" ]
 
-env:
-  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build:
@@ -25,7 +23,7 @@ jobs:
         run: sudo apt-get install -y ninja-build ccache llvm
 
       - name: build
-        run: ./test.sh
+        run: . ./test.sh
         shell: sh
 
       - name: upload bin
@@ -37,3 +35,5 @@ jobs:
       - name: delete ccache cache so it can be overwritten
         if: steps.cache.outputs.cache-hit == 'true'
         run: gh api --method DELETE /repos/AlistairKeiller/editor-wasm/actions/caches?key=ccache
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
