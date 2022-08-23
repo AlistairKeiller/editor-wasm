@@ -24,7 +24,7 @@ jobs:
         shell: sh
 
       - name: build
-        run: ./test.sh
+        run: . ./test.sh
         shell: sh
 
       - name: upload bin
