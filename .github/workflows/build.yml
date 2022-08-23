@@ -30,7 +30,6 @@ jobs:
       - name: upload bin
         uses: actions/upload-artifact@v3
         with:
-            name: bin
             path: ${{ github.workspace }}/web-llvm-build/bin/
 
       - name: delete ccache cache so it can be overwritten
