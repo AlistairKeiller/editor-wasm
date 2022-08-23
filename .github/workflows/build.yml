@@ -22,7 +22,7 @@ jobs:
           key: ccache
 
       - name: install dependencies
-        run: sudo apt-get install -y ninja-build ccache llvm-dev
+        run: sudo apt-get install -y ninja-build ccache llvm
 
       - name: build
         run: sudo sh test.sh
