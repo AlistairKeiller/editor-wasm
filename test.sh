@@ -3,7 +3,7 @@
 set -e
 
 # install emscripten
-git clone https://github.com/emscripten-core/emsdk.git
+git clone https://github.com/emscripten-core/emsdk
 cd emsdk
 ./emsdk install latest
 ./emsdk activate latest
