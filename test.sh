@@ -14,10 +14,11 @@ cd emsdk
 cd ..
 
 # build sysroot
-git clone https://github.com/WebAssembly/wasi-libc
-cd wasi-libc
-make
-cd ..
+# git clone https://github.com/WebAssembly/wasi-libc
+# cd wasi-libc
+# make
+# cd ..
+wget -qO- https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-16/wasi-sysroot-16.0.tar.gz | tar -xz
 
 # download older version of cmake for emscripten compatibility
 wget -qO- https://github.com/Kitware/CMake/releases/download/v3.23.3/cmake-3.23.3-linux-x86_64.tar.gz | tar -xz
@@ -37,5 +38,6 @@ emcmake ./cmake-3.23.3-linux-x86_64/bin/cmake -G Ninja -S llvm-project/llvm -B w
         -DLLVM_CCACHE_DIR=/tmp/ccache \
         -DDEFAULT_SYSROOT=/sysroot \
         -DCMAKE_CXX_FLAGS='-Dwait4=__syscall_wait4 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE'
-mv wasi-libc/sysroot web-llvm-build
+# mv wasi-libc/sysroot web-llvm-build
+mv wasi-sysroot web-llvm-build/sysroot
 ninja -C web-llvm-build -- clang
