@@ -6,7 +6,7 @@ git clone https://github.com/emscripten-core/emsdk.git
 cd emsdk
 ./emsdk install latest
 ./emsdk activate latest
-./emsdk_env.sh
+. ./emsdk_env.sh
 
 git clone https://github.com/llvm/llvm-project
 emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
