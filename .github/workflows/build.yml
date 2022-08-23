@@ -25,7 +25,7 @@ jobs:
         run: sudo apt-get install -y ninja-build ccache llvm
 
       - name: build
-        run: sudo sh test.sh
+        run: echo $SHELL #sudo sh test.sh
 
       - name: upload bin
         uses: actions/upload-artifact@v3
