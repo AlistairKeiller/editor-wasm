@@ -13,7 +13,9 @@ cd ..
 # build sysroot
 git clone https://github.com/WebAssembly/wasi-libc
 cd wasi-libc
-make
+make CC=/usr/bin/clang \
+     AR=/usr/bin/llvm-ar \
+     NM=/usr/bin/llvm-nm
 cd ..
 
 # download older version of cmake for emscripten compatibility
