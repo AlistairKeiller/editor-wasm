@@ -21,9 +21,10 @@ jobs:
 
       - name: install dependencies
         run: sudo apt-get install -y ninja-build ccache llvm
+        shell: sh
 
       - name: build
-        run: test.sh
+        run: ./test.sh
         shell: sh
 
       - name: upload bin
