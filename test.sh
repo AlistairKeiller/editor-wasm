@@ -2,6 +2,9 @@
 
 set -e
 
+# install dependencies
+apt-get install -y ninja-build ccache llvm
+
 # install emscripten
 git clone https://github.com/emscripten-core/emsdk
 cd emsdk
