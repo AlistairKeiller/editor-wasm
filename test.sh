@@ -7,6 +7,7 @@ cd emsdk
 ./emsdk install latest
 ./emsdk activate latest
 . ./emsdk_env.sh
+cd ..
 
 git clone https://github.com/llvm/llvm-project
 emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
