@@ -32,6 +32,8 @@ npm i
 export PATH=$PWD:$PATH
 cd ..
 emcc --generate-config
+emcc --check
+emcc emscripten/test/hello_world.cpp
 
 # build sysroot
 git clone https://github.com/WebAssembly/wasi-libc
@@ -39,30 +41,20 @@ cd wasi-libc
 make
 cd ..
 
-echo """#include <iosfwd>
-#if defined(__GLIBCXX__)
-#if !defined(_GLIBCXX_RELEASE) || _GLIBCXX_RELEASE < 7
-#error Unsupported libstdc++ version
-#endif
-#endif
-int main() { return 0; }""" > test.cpp
-
-emcc test.cpp
-
 # build wasm llvm
 # sed -i '5i set_target_properties(clang PROPERTIES LINK_FLAGS --embed-file=sysroot)' llvm-project/clang/tools/CMakeLists.txt
-emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
-        -DCMAKE_BUILD_TYPE=MinSizeRel \
-        -DLLVM_ENABLE_PROJECTS="clang" \
-        -DLLVM_TARGETS_TO_BUILD=WebAssembly \
-        -DLLVM_TABLEGEN=$PWD/host-llvm-build/bin/llvm-tblgen \
-        -DCLANG_TABLEGEN=$PWD/host-llvm-build/bin/clang-tblgen \
-        -DLLVM_PARALLEL_LINK_JOBS=1 \
-        -DLLVM_INCLUDE_BENCHMARKS=OFF \
-        -DLLVM_INCLUDE_EXAMPLES=OFF \
-        -DLLVM_INCLUDE_TESTS=OFF \
-        -DLLVM_CCACHE_BUILD=ON \
-        -DLLVM_CCACHE_DIR=/tmp/ccache \
+# emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
+#         -DCMAKE_BUILD_TYPE=MinSizeRel \
+#         -DLLVM_ENABLE_PROJECTS="clang" \
+#         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
+#         -DLLVM_TABLEGEN=$PWD/host-llvm-build/bin/llvm-tblgen \
+#         -DCLANG_TABLEGEN=$PWD/host-llvm-build/bin/clang-tblgen \
+#         -DLLVM_PARALLEL_LINK_JOBS=1 \
+#         -DLLVM_INCLUDE_BENCHMARKS=OFF \
+#         -DLLVM_INCLUDE_EXAMPLES=OFF \
+#         -DLLVM_INCLUDE_TESTS=OFF \
+#         -DLLVM_CCACHE_BUILD=ON \
+#         -DLLVM_CCACHE_DIR=/tmp/ccache \
 #         -DCMAKE_CXX_FLAGS='-Dwait4=__syscall_wait4 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE'
 # mv wasi-libc/sysroot web-llvm-build
-ninja -C web-llvm-build -- clang
+# ninja -C web-llvm-build -- clang
