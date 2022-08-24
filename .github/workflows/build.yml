@@ -26,7 +26,7 @@ jobs:
       - name: upload bin
         uses: actions/upload-artifact@v3
         with:
-            path: ${{ github.workspace }}/web-llvm-build/
+            path: ${{ github.workspace }}/web-llvm-build/bin
 
       - name: delete ccache cache so it can be overwritten
         if: steps.cache.outputs.cache-hit == 'true'
