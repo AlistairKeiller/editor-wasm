@@ -37,7 +37,6 @@ emcmake ./cmake-3.23.3-linux-x86_64/bin/cmake -G Ninja -S llvm-project/llvm -B w
         -DLLVM_INCLUDE_TESTS=OFF \
         -DLLVM_CCACHE_BUILD=ON \
         -DLLVM_CCACHE_DIR=/tmp/ccache \
-        -DCMAKE_CXX_FLAGS='-Dwait4=__syscall_wait4 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE' \
-        # -DDEFAULT_SYSROOT=/sysroot
+        -DCMAKE_CXX_FLAGS='-Dwait4=__syscall_wait4 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE'
 mv wasi-libc/sysroot web-llvm-build
 ninja -C web-llvm-build -- clang
