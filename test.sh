@@ -35,7 +35,7 @@ emcmake ./cmake-3.23.3-linux-x86_64/bin/cmake -G Ninja -S llvm-project/llvm -B w
         -DLLVM_INCLUDE_TESTS=OFF \
         -DLLVM_CCACHE_BUILD=ON \
         -DLLVM_CCACHE_DIR=/tmp/ccache \
-        -DCMAKE_CXX_FLAGS='-Dwait4=__syscall_wait4 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE -sINITIAL_MEMORY=32MB'
+        -DCMAKE_CXX_FLAGS='-Dwait4=__syscall_wait4 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE -sINITIAL_MEMORY=64MB' # -sWASM_BIGINT --closure 1 -flto ENVIROMENT=web -WASMFS -sUSE_PTHREADS
 mkdir -p web-llvm-build/lib/clang
 mv wasi-libc/sysroot web-llvm-build/lib/clang/wasi
 ninja -C web-llvm-build -- clang
