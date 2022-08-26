@@ -3,7 +3,7 @@
 set -e
 
 # install dependencies
-sudo apt-get install -y ninja-build ccache llvm
+sudo apt-get install -y ninja-build ccache
 
 # install emscripten
 git clone https://github.com/emscripten-core/emsdk
@@ -13,13 +13,10 @@ cd emsdk
 . ./emsdk_env.sh
 cd ..
 
-# build sysroot
-git clone https://github.com/WebAssembly/wasi-libc
-cd wasi-libc
-make
-cd ..
+# download sysroot with libc and libcxx from https://github.com/WebAssembly/wasi-sdk/releases
+wget -qO- https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-16/wasi-sysroot-16.0.tar.gz | tar -xz
 
-# download older version of cmake for emscripten compatibility
+# download older version of cmake for emscripten compatibility ( should remove in emscripten 3.1.21 )
 wget -qO- https://github.com/Kitware/CMake/releases/download/v3.23.3/cmake-3.23.3-linux-x86_64.tar.gz | tar -xz
 
 # build llvm
@@ -37,5 +34,5 @@ emcmake ./cmake-3.23.3-linux-x86_64/bin/cmake -G Ninja -S llvm-project/llvm -B w
         -DLLVM_CCACHE_DIR=/tmp/ccache \
         -DCMAKE_CXX_FLAGS='-Dwait4=__syscall_wait4 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE -sINITIAL_MEMORY=32MB' # -sWASM_BIGINT --closure 1 -flto ENVIROMENT=web -WASMFS -sUSE_PTHREADS
 mkdir -p web-llvm-build/lib/clang
-mv wasi-libc/sysroot web-llvm-build/lib/clang/wasi
+mv wasi-sysroot web-llvm-build/lib/clang/wasi
 ninja -C web-llvm-build -- clang
