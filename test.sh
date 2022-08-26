@@ -8,8 +8,8 @@ sudo apt-get install -y ninja-build ccache llvm
 # install emscripten
 git clone https://github.com/emscripten-core/emsdk
 cd emsdk
-./emsdk install 3.1.19
-./emsdk activate 3.1.19
+./emsdk install latest
+./emsdk activate latest
 . ./emsdk_env.sh
 cd ..
 
