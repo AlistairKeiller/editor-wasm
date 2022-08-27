@@ -20,6 +20,7 @@ wget -qO- https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-16/
 wget -qO- https://github.com/Kitware/CMake/releases/download/v3.23.3/cmake-3.23.3-linux-x86_64.tar.gz | tar -xz
 
 # build llvm
+git clone https://github.com/llvm/llvm-project
 echo 'set_target_properties(clang PROPERTIES LINK_FLAGS --embed-file=lib/clang)' >> llvm-project/llvm/CMakeLists.txt
 emcmake ./cmake-3.23.3-linux-x86_64/bin/cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
