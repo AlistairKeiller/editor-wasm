@@ -26,7 +26,7 @@ wget -qO- https://github.com/Kitware/CMake/releases/download/v3.23.3/cmake-3.23.
 git clone https://github.com/llvm/llvm-project
 
 # build libcxx
-emcmake cmake -G Ninja -S llvm-projectruntimes -B libcxx-llvm-build \
+emcmake cmake -G Ninja -S llvm-project/runtimes -B libcxx-llvm-build \
         -DLLVM_ENABLE_RUNTIMES="libcxx"
 ninja -C libcxx-llvm-build
 
