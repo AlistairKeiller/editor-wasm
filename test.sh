@@ -28,7 +28,7 @@ git clone https://github.com/llvm/llvm-project
 # build libcxx
 emcmake ./cmake-3.23.3-linux-x86_64/bin/cmake -G Ninja -S llvm-project/runtimes -B libcxx-llvm-build \
         -DLIBCXX_ENABLE_SHARED=OFF \
-        -DLLVM_ENABLE_RUNTIMES="libcxx"
+        -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi"
 ninja -C libcxx-llvm-build
 
 # build cmake
