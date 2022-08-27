@@ -26,6 +26,7 @@ emcmake ./cmake-3.23.3-linux-x86_64/bin/cmake -G Ninja -S llvm-project/llvm -B w
         -DLLVM_ENABLE_PROJECTS="clang" \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
         -DLLVM_DEFAULT_TARGET_TRIPLE=wasm32-wasi \
+        -DLLVM_TARGET_ARCH=wasm32-emscripten \
         -DLLVM_PARALLEL_LINK_JOBS=1 \
         -DLLVM_INCLUDE_BENCHMARKS=OFF \
         -DLLVM_INCLUDE_EXAMPLES=OFF \
