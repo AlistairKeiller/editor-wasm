@@ -28,7 +28,7 @@ echo 'set_target_properties(clang PROPERTIES LINK_FLAGS --embed-file=lib/clang)'
 emcmake ./cmake-3.23.3-linux-x86_64/bin/cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
         -DLLVM_ENABLE_PROJECTS="clang" \
-        -DLLVM_ENABLE_RUNTIMES="libc;libcxx" \
+        -DLLVM_ENABLE_RUNTIMES="libcxx" \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
         -DLLVM_PARALLEL_LINK_JOBS=1 \
         -DLLVM_INCLUDE_BENCHMARKS=OFF \
