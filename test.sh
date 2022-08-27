@@ -14,10 +14,10 @@ cd emsdk
 cd ..
 
 # build libc
-git clone https://github.com/WebAssembly/wasi-libc
-cd wasi-libc
-make
-cd ..
+# git clone https://github.com/WebAssembly/wasi-libc
+# cd wasi-libc
+# make
+# cd ..
 
 # download older version of cmake for emscripten compatibility ( should remove in emscripten 3.1.21 )
 wget -qO- https://github.com/Kitware/CMake/releases/download/v3.23.3/cmake-3.23.3-linux-x86_64.tar.gz | tar -xz
