@@ -3,7 +3,7 @@
 set -e
 
 # install dependencies
-sudo apt-get install -y ninja-build ccache
+sudo apt-get install -y ninja-build ccache llvm
 
 # install emscripten
 git clone https://github.com/emscripten-core/emsdk
