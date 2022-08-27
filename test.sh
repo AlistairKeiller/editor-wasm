@@ -24,7 +24,7 @@ git clone https://github.com/llvm/llvm-project
 echo 'set_target_properties(clang PROPERTIES LINK_FLAGS --embed-file=lib/clang)' >> llvm-project/llvm/CMakeLists.txt
 emcmake ./cmake-3.23.3-linux-x86_64/bin/cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
         -DCMAKE_BUILD_TYPE=Release \
-        -DLLVM_ENABLE_PROJECTS="clang" \
+        -DLLVM_ENABLE_PROJECTS="clang;lld" \
         -DLLVM_TARGETS_TO_BUILD=WebAssembly \
         -DLLVM_DEFAULT_TARGET_TRIPLE=wasm32-wasi \
         -DLLVM_TARGET_ARCH=wasm32-emscripten \
@@ -37,4 +37,4 @@ emcmake ./cmake-3.23.3-linux-x86_64/bin/cmake -G Ninja -S llvm-project/llvm -B w
         -DCMAKE_CXX_FLAGS='-Dwait4=__syscall_wait4 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE -sINITIAL_MEMORY=32MB' # -sWASM_BIGINT --closure 1 -flto ENVIROMENT=web -WASMFS -sUSE_PTHREADS
 mkdir -p web-llvm-build/lib/clang
 mv wasi-sysroot web-llvm-build/lib/clang/wasi
-ninja -C web-llvm-build -- clang
+ninja -C web-llvm-build -- clang lld
