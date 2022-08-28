@@ -15,8 +15,10 @@ jobs:
           key: ccache
 
       - name: build
-        run: . ./test.sh
         shell: sh
+        run: |
+          sudo apt-get install -y ninja-build ccache
+          . ./test.sh
 
       - name: upload bin
         uses: actions/upload-artifact@v3
