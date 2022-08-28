@@ -1,0 +1,4 @@
+emsdk
+wasi-sysroot
+llvm-project
+cmake-3.23.3-linux-x86_64
