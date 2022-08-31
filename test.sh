@@ -12,13 +12,16 @@ cd ..
 
 # download sysroot
 wget -qO- https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-16/wasi-sysroot-16.0.tar.gz | tar -xz
+wget -qO- https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-16/libclang_rt.builtins-wasm32-wasi-16.0.tar.gz | tar -xz
 
 # download older version of cmake for emscripten compatibility ( should remove in emscripten 3.1.21 )
 wget -qO- https://github.com/Kitware/CMake/releases/download/v3.23.3/cmake-3.23.3-linux-x86_64.tar.gz | tar -xz
 
 # build llvm
 git clone https://github.com/llvm/llvm-project
-echo 'set_target_properties(clang PROPERTIES LINK_FLAGS --embed-file=lib/clang)' >> llvm-project/llvm/CMakeLists.txt
+
+echo "set_target_properties(clang PROPERTIES LINK_FLAGS --embed-file=lib/clang/16.0.0/include)
+set_target_properties(lld PROPERTIES LINK_FLAGS --embed-file=wlib)" >> llvm-project/llvm/CMakeLists.txt
 CXXFLAGS="-Dwait4=__syscall_wait4" \
 LDFLAGS='-sEXPORTED_RUNTIME_METHODS=FS,callMain -sALLOW_MEMORY_GROWTH -sEXPORT_ES6 -sMODULARIZE -sINITIAL_MEMORY=32MB -sWASM_BIGINT -sENVIRONMENT=web' \
 emcmake ./cmake-3.23.3-linux-x86_64/bin/cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
@@ -33,6 +36,10 @@ emcmake ./cmake-3.23.3-linux-x86_64/bin/cmake -G Ninja -S llvm-project/llvm -B w
         -DLLVM_INCLUDE_TESTS=OFF \
         -DLLVM_CCACHE_BUILD=ON \
         -DLLVM_CCACHE_DIR=/tmp/ccache
-mkdir -p web-llvm-build/lib/clang
-mv wasi-sysroot web-llvm-build/lib/clang/wasi
+
+mkdir -p web-llvm-build/lib/clang/16.0.0
+cp -r wasi-sysroot/include web-llvm-build/lib/clang/16.0.0/include
+cp -r wasi-sysroot/lib/wasm32-wasi web-llvm-build/wlib
+cp -r lib/wasi/libclang_rt.builtins-wasm32.a web-llvm-build/wlib/libclang_rt.builtins-wasm32.a
+
 ninja -C web-llvm-build -- clang lld

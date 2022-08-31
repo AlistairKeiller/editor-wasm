@@ -3,3 +3,4 @@ wasi-sysroot
 llvm-project
 web-llvm-build
 cmake-3.23.3-linux-x86_64
+lib
