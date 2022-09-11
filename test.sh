@@ -20,7 +20,7 @@ git clone https://github.com/llvm/llvm-project
 echo "set_target_properties(clang PROPERTIES LINK_FLAGS --embed-file=lib/clang/16.0.0/include)
 set_target_properties(lld PROPERTIES LINK_FLAGS --embed-file=wlib)" >> llvm-project/llvm/CMakeLists.txt
 CXXFLAGS="-Dwait4=__syscall_wait4" \
-LDFLAGS='-sEXPORTED_RUNTIME_METHODS=FS,callMain -sEXPORT_ES6 -sMODULARIZE -sALLOW_MEMORY_GROWTH -sINITIAL_MEMORY=64MB -sWASM_BIGINT -sENVIRONMENT=web' \
+LDFLAGS='-sEXPORTED_RUNTIME_METHODS=FS,callMain -sINVOKE_RUN=0 -sEXPORT_ES6 -sMODULARIZE -sALLOW_MEMORY_GROWTH -sINITIAL_MEMORY=64MB -sWASM_BIGINT -sENVIRONMENT=web' \
 emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
         -DCMAKE_BUILD_TYPE=Release \
         -DLLVM_ENABLE_PROJECTS="clang;lld" \
