@@ -34,6 +34,10 @@ emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
         -DLLVM_ENABLE_THREADS=OFF \
         -DLLVM_CCACHE_BUILD=ON \
         -DLLVM_CCACHE_DIR=/tmp/ccache
+        # -DLLVM_ENABLE_LTO=Full
+        # MINIMAL_RUNTIME_STREAMING_WASM_INSTANTIATION=1
+        # EMCC_STRICT=1
+        # USE_CLOSURE_COMPILER=1
 
 mkdir -p web-llvm-build/lib/clang/16.0.0
 cp -r wasi-sysroot/include web-llvm-build/lib/clang/16.0.0/include
