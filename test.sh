@@ -39,6 +39,7 @@ emcmake cmake -G Ninja -S llvm-project/llvm -B web-llvm-build \
         # EMCC_STRICT=1
         # USE_CLOSURE_COMPILER=1
         # EXIT_RUNTIME=1
+        # MALLOC=emmalloc
 
 mkdir -p web-llvm-build/lib/clang/16.0.0
 cp -r wasi-sysroot/include web-llvm-build/lib/clang/16.0.0/include
